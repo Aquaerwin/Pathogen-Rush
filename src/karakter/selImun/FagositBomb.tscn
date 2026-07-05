@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cgopkltpnmrvd"]
+
+[ext_resource type="Script" uid="uid://g01ds8t3lhgf" path="res://src/karakter/selImun/FagositBomb.gd" id="1_fb"]
+[ext_resource type="Texture2D" uid="uid://jc4mxcgt5dxl" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (1).png" id="2_fb1"]
+[ext_resource type="Texture2D" uid="uid://ba8r6b8dkwvtc" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (2).png" id="3_fb2"]
+[ext_resource type="Texture2D" uid="uid://dkfcqi8penxkd" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (3).png" id="4_fb3"]
+[ext_resource type="Texture2D" uid="uid://dxe5hhmbhv8o2" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (4).png" id="5_fb4"]
+[ext_resource type="Texture2D" uid="uid://co00xidiuc0a2" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (5).png" id="6_fb5"]
+[ext_resource type="Texture2D" uid="uid://ihcnakrdvboc" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (6).png" id="7_fb6"]
+[ext_resource type="Texture2D" uid="uid://c2tsvmu0qbx25" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (7).png" id="8_fb7"]
+[ext_resource type="Texture2D" uid="uid://bamidaq34txqw" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (8).png" id="9_fb8"]
+[ext_resource type="Texture2D" uid="uid://br2y8cmwfo4e3" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (9).png" id="10_fb9"]
+[ext_resource type="Texture2D" uid="uid://dfyn7a35hd85v" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (10).png" id="11_fb10"]
+[ext_resource type="Texture2D" uid="uid://l2frc3sc8qme" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (11).png" id="12_fb11"]
+[ext_resource type="Texture2D" uid="uid://poyj3f2da77i" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (12).png" id="13_fb12"]
+[ext_resource type="Texture2D" uid="uid://cl6e6vtip5hx2" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (13).png" id="14_fb13"]
+[ext_resource type="Texture2D" uid="uid://dypj1p7okhx0y" path="res://src/karakter/selImun/assets/selFagosit/fagositBomb (14).png" id="15_fb14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb"]
+size = Vector2(80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fb9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fb10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fb11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fb12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fb13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_fb14")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 14.0
+}]
+
+[node name="FagositBomb" type="Area2D" unique_id=564190555]
+script = ExtResource("1_fb")
+damage = 1200
+explode_radius = 200.0
+hp = 300
+max_hp = 300
+cost = 125
+cooldown_tanam = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=566246420]
+shape = SubResource("RectangleShape2D_fb")
+
+[node name="shadow" type="AnimatedSprite2D" parent="." unique_id=707600723]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 25)
+rotation = 0.2617994
+scale = Vector2(0.7, 0.7)
+skew = 1.0471976
+sprite_frames = SubResource("SpriteFrames_fb")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=614871297]
+sprite_frames = SubResource("SpriteFrames_fb")
+animation = &"explode"
+autoplay = "explode"

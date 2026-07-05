@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://dojn1c2m5vqqq"]
+
+[ext_resource type="Script" uid="uid://ucr2612yw6so" path="res://src/karakter/musuh/Parasite.gd" id="1_m0aab"]
+[ext_resource type="Texture2D" uid="uid://csaclx4y00r0r" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (1).png" id="2_du3qa"]
+[ext_resource type="Texture2D" uid="uid://b4lstl0lecbow" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (2).png" id="3_lk6hh"]
+[ext_resource type="Texture2D" uid="uid://dx8mpcclbosht" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (3).png" id="4_n5fmc"]
+[ext_resource type="Texture2D" uid="uid://bmi1eaum2sh15" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (4).png" id="5_yqsci"]
+[ext_resource type="Texture2D" uid="uid://cx81jwinljw4j" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (5).png" id="6_oipos"]
+[ext_resource type="Texture2D" uid="uid://doq53r04hb8aj" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (6).png" id="7_5ys6q"]
+[ext_resource type="Texture2D" uid="uid://badulr81rm78u" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (7).png" id="8_83tjb"]
+[ext_resource type="Texture2D" uid="uid://bqu38xapgu382" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (8).png" id="9_eos05"]
+[ext_resource type="Texture2D" uid="uid://csv2te0brovck" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (9).png" id="10_a5moo"]
+[ext_resource type="Texture2D" uid="uid://bei50vojuaoml" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (10).png" id="11_18plm"]
+[ext_resource type="Texture2D" uid="uid://do2yxinkyydga" path="res://src/karakter/musuh/assets/parasite/parasiteAtt (11).png" id="12_1v4rb"]
+[ext_resource type="Texture2D" uid="uid://cnyee56k7mwxw" path="res://src/karakter/musuh/assets/parasite/parasiteDead (1).png" id="13_7jigg"]
+[ext_resource type="Texture2D" uid="uid://bwuogr31bjemg" path="res://src/karakter/musuh/assets/parasite/parasiteDead (2).png" id="14_ugois"]
+[ext_resource type="Texture2D" uid="uid://di0ykqgdhcs3g" path="res://src/karakter/musuh/assets/parasite/parasiteDead (3).png" id="15_ayie4"]
+[ext_resource type="Texture2D" uid="uid://wc6k3fqnuhdf" path="res://src/karakter/musuh/assets/parasite/parasiteDead (4).png" id="16_s1w53"]
+[ext_resource type="Texture2D" uid="uid://bhihdkulcpasp" path="res://src/karakter/musuh/assets/parasite/parasiteDead (5).png" id="17_o0jqh"]
+[ext_resource type="Texture2D" uid="uid://dv823h6qvtra0" path="res://src/karakter/musuh/assets/parasite/parasiteWalk (1).png" id="18_qec8p"]
+[ext_resource type="Texture2D" uid="uid://bt73caih5xorf" path="res://src/karakter/musuh/assets/parasite/parasiteWalk (2).png" id="19_le7y2"]
+[ext_resource type="Texture2D" uid="uid://cjx3qtv41tkbm" path="res://src/karakter/musuh/assets/parasite/parasiteWalk (3).png" id="20_h2ewc"]
+[ext_resource type="Texture2D" uid="uid://dmt04hnsxot3v" path="res://src/karakter/musuh/assets/parasite/parasiteWalk (4).png" id="21_v7cuw"]
+[ext_resource type="Texture2D" uid="uid://cop4bqy1mhbu6" path="res://src/karakter/musuh/assets/parasite/parasiteWalk (5).png" id="22_o1jqt"]
+[ext_resource type="Texture2D" uid="uid://dla1pmqliohg7" path="res://src/karakter/musuh/assets/parasite/parasiteWalk (6).png" id="23_2ho2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_parasite"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_du3qa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lk6hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n5fmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yqsci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oipos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5ys6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_83tjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_eos05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a5moo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_18plm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1v4rb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_7jigg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ugois")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ayie4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_s1w53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_o0jqh")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_qec8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_le7y2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_h2ewc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_v7cuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_o1jqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2ho2b")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[node name="Parasite" type="Area2D" unique_id=1214246905 groups=["parasite"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_m0aab")
+hp = 1200
+normal_speed = 20.0
+attack_damage = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611097412]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=676937382]
+modulate = Color(0, 0, 0, 0.39215687)
+position = Vector2(0, 24.722)
+scale = Vector2(1.2716262, 0.9499036)
+skew = 1.3962634
+sprite_frames = SubResource("SpriteFrames_parasite")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.034519766
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1233414421]
+sprite_frames = SubResource("SpriteFrames_parasite")
+animation = &"walk"
+autoplay = "walk"
+frame = 1
+frame_progress = 0.73068446
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=146769300]

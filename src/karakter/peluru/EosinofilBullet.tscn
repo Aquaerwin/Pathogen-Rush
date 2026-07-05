@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://dv4urajuh61eg"]
+
+[ext_resource type="Script" uid="uid://de4s0vj0h6gxr" path="res://src/karakter/peluru/EosinofilBullet.gd" id="1_b"]
+[ext_resource type="Texture2D" uid="uid://dfepqr8ybpeab" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilBullet (1).png" id="2_f1"]
+[ext_resource type="Texture2D" uid="uid://ceoh8mgirnqqf" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilBullet (2).png" id="3_f2"]
+[ext_resource type="Texture2D" uid="uid://bacyya3w5ornu" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilBullet (3).png" id="4_f3"]
+[ext_resource type="Texture2D" uid="uid://cjogdojo1ujdg" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilBullet (4).png" id="5_f4"]
+[ext_resource type="Texture2D" uid="uid://dcrvjw3sr58r1" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilBullet (5).png" id="6_f5"]
+[ext_resource type="Texture2D" uid="uid://cr3gafnyo2dwm" path="res://src/karakter/selImun/assets/selEosinofil/bulletExplode (1).png" id="7_e1"]
+[ext_resource type="Texture2D" uid="uid://bswp5nkqmail6" path="res://src/karakter/selImun/assets/selEosinofil/bulletExplode (2).png" id="8_e2"]
+[ext_resource type="Texture2D" uid="uid://5yy2wxw7bqmq" path="res://src/karakter/selImun/assets/selEosinofil/bulletExplode (3).png" id="9_e3"]
+[ext_resource type="Texture2D" uid="uid://ba0dn46ofnnw1" path="res://src/karakter/selImun/assets/selEosinofil/bulletExplode (4).png" id="10_e4"]
+[ext_resource type="Texture2D" uid="uid://duchpviqvgrac" path="res://src/karakter/selImun/assets/selEosinofil/bulletExplode (5).png" id="11_e5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(30, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e5")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f5")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}]
+
+[node name="EosinofilBullet" type="Area2D" unique_id=249818948]
+z_index = 60
+script = ExtResource("1_b")
+damage = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345837329]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="shadow" type="AnimatedSprite2D" parent="." unique_id=1498905512]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 40)
+rotation = 0.17453292
+scale = Vector2(0.7, 0.7)
+skew = 1.0471976
+sprite_frames = SubResource("SpriteFrames_bullet")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=503652596]
+sprite_frames = SubResource("SpriteFrames_bullet")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1175647966]

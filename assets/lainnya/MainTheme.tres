@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://bryth2eui66gl"]
+
+[ext_resource type="FontFile" uid="uid://cyib4t7xf80n1" path="res://assets/lainnya/PixelGame.otf" id="1_font"]
+
+[resource]
+default_font = ExtResource("1_font")

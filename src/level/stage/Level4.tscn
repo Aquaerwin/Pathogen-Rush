@@ -1,0 +1,470 @@
+[gd_scene format=3 uid="uid://bvw8w6e3htedt"]
+
+[ext_resource type="Script" uid="uid://cdexe64mx75v5" path="res://src/level/sistem/LevelManager.gd" id="1_kbdhv"]
+[ext_resource type="PackedScene" uid="uid://nbhk3waakrjg" path="res://src/poin/ItemDrop.tscn" id="2_jdoyc"]
+[ext_resource type="Script" uid="uid://dlkibhhin55f" path="res://src/level/sistem/WaveManager.gd" id="2_olq8t"]
+[ext_resource type="Script" uid="uid://ngc55tl5876g" path="res://src/level/sistem/PlacementManager.gd" id="3_0jt3j"]
+[ext_resource type="PackedScene" uid="uid://dp6i0jnmhf57d" path="res://src/karakter/peluru/NKBullet.tscn" id="3_vkpjq"]
+[ext_resource type="PackedScene" uid="uid://dv4urajuh61eg" path="res://src/karakter/peluru/EosinofilBullet.tscn" id="4_elt1b"]
+[ext_resource type="Texture2D" uid="uid://bu3d6mnl2qdrc" path="res://assets/background/arena.png" id="4_jdoyc"]
+[ext_resource type="Script" uid="uid://cw30ki78eegto" path="res://src/level/sistem/LevelUI.gd" id="5_vkpjq"]
+[ext_resource type="Texture2D" uid="uid://dmvoipvdo6eu2" path="res://assets/background/bgATP.png" id="6_elt1b"]
+[ext_resource type="PackedScene" uid="uid://bak1kdi2tqj" path="res://src/karakter/musuh/Bakteri.tscn" id="6_t2baj"]
+[ext_resource type="PackedScene" uid="uid://dc0boeh36aocp" path="res://src/karakter/selImun/Mitokondria.tscn" id="7_dk5x8"]
+[ext_resource type="Texture2D" uid="uid://dtl8o3xypr07" path="res://src/poin/assets/Energi.png" id="7_kylwg"]
+[ext_resource type="PackedScene" uid="uid://cbvtg5ws18dyj" path="res://src/karakter/musuh/Virus.tscn" id="8_6ip7q"]
+[ext_resource type="PackedScene" uid="uid://dfi8xteak1hh1" path="res://src/karakter/selImun/Eosinofil.tscn" id="8_q0ey0"]
+[ext_resource type="Texture2D" uid="uid://c8mh01vyu8rmn" path="res://src/poin/assets/ATP.png" id="8_tgn6p"]
+[ext_resource type="Texture2D" uid="uid://ol5q0c6dackd" path="res://assets/tombol/btnVol.png" id="9_kr60w"]
+[ext_resource type="PackedScene" uid="uid://conp80s75bfj7" path="res://src/ui/popup/PausePopup.tscn" id="9_kylwg"]
+[ext_resource type="PackedScene" uid="uid://bnqqa8xrf6ec2" path="res://src/karakter/selImun/Epitel.tscn" id="9_ssbvi"]
+[ext_resource type="Texture2D" uid="uid://bs13tew2x621o" path="res://assets/tombol/btn.png" id="10_18ar2"]
+[ext_resource type="PackedScene" uid="uid://cwr6kt0it2oul" path="res://src/karakter/selImun/SelMast.tscn" id="10_t2baj"]
+[ext_resource type="PackedScene" uid="uid://cmg61xjb88yva" path="res://src/ui/popup/WinPopup.tscn" id="10_tgn6p"]
+[ext_resource type="Texture2D" uid="uid://du1am0nt6r47j" path="res://assets/tombol/btnpress.png" id="11_a221d"]
+[ext_resource type="PackedScene" uid="uid://ddyyl2e0d3i1k" path="res://src/ui/popup/LosePopup.tscn" id="11_kr60w"]
+[ext_resource type="PackedScene" uid="uid://bdk8y6eh8jpdb" path="res://src/karakter/selImun/SelNK.tscn" id="11_ns5s4"]
+[ext_resource type="PackedScene" uid="uid://cgopkltpnmrvd" path="res://src/karakter/selImun/FagositBomb.tscn" id="12_6ip7q"]
+[ext_resource type="Texture2D" uid="uid://c7rhlcglfxx80" path="res://assets/tombol/sett.png" id="12_kckib"]
+[ext_resource type="Texture2D" uid="uid://b1lkbgut11n3i" path="res://src/karakter/selImun/assets/mitokondria/mitoIdle1.png" id="13_dk5x8"]
+[ext_resource type="Texture2D" uid="uid://cj47hoewglppq" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilIdle (1).png" id="14_q0ey0"]
+[ext_resource type="Texture2D" uid="uid://iolef3qgum77" path="res://src/karakter/selImun/assets/selEpitel/epitelIdle (1).png" id="15_ssbvi"]
+[ext_resource type="Texture2D" uid="uid://bbc2uoo7n2how" path="res://src/karakter/selImun/assets/selMast/mastIdle (1).png" id="16_t2baj"]
+[ext_resource type="Texture2D" uid="uid://b51c44ntxens4" path="res://src/karakter/selImun/assets/selNK/nkIdle (1).png" id="17_ns5s4"]
+[ext_resource type="PackedScene" uid="uid://dojn1c2m5vqqq" path="res://src/karakter/musuh/Parasite.tscn" id="parasite_res"]
+
+[sub_resource type="GDScript" id="GDScript_lc31b"]
+script/source = "extends Node
+
+@export var img_left_gap: float = 60.0
+@export var img_top_gap: float = 144.0
+@export var img_right_gap: float = 88.0
+@export var img_bottom_gap: float = 48.0
+@export var img_original_size: Vector2 = Vector2(1024, 576)
+@export var screen_size: Vector2 = Vector2(1280, 720)
+
+@export var grid_cols: int = 9
+@export var grid_rows: int = 5
+
+var occupied_cells = {}
+
+func get_grid_start() -> Vector2:
+	var scale_x = screen_size.x / img_original_size.x
+	var scale_y = screen_size.y / img_original_size.y
+	return Vector2(img_left_gap * scale_x, img_top_gap * scale_y)
+
+func get_cell_size() -> Vector2:
+	var scale_x = screen_size.x / img_original_size.x
+	var scale_y = screen_size.y / img_original_size.y
+	var grid_w = (img_original_size.x - img_left_gap - img_right_gap) * scale_x
+	var grid_h = (img_original_size.y - img_top_gap - img_bottom_gap) * scale_y
+	return Vector2(grid_w / float(grid_cols), grid_h / float(grid_rows))
+
+func get_grid_index(pos: Vector2) -> Vector2:
+	var cell_size = get_cell_size()
+	var grid_start = get_grid_start()
+	var col = int((pos.x - grid_start.x) / cell_size.x)
+	var row = int((pos.y - grid_start.y) / cell_size.y)
+	return Vector2(col, row)
+
+func get_grid_center(grid_pos: Vector2) -> Vector2:
+	var cell_size = get_cell_size()
+	var grid_start = get_grid_start()
+	var center_x = grid_start.x + (grid_pos.x * cell_size.x) + (cell_size.x / 2.0) + 15.0 # Geser 15px ke kanan
+	var center_y = grid_start.y + (grid_pos.y * cell_size.y) + (cell_size.y / 2.0)
+	return Vector2(center_x, center_y)
+
+func is_cell_occupied(grid_pos: Vector2) -> bool:
+	return occupied_cells.has(grid_pos)
+
+func set_cell_occupied(grid_pos: Vector2, occupied: bool):
+	if occupied:
+		occupied_cells[grid_pos] = true
+	else:
+		occupied_cells.erase(grid_pos)
+
+func is_valid_grid_pos(grid_pos: Vector2) -> bool:
+	return grid_pos.x >= 0 and grid_pos.x < grid_cols and grid_pos.y >= 0 and grid_pos.y < grid_rows
+"
+
+[sub_resource type="TileSet" id="TileSet_ekgsa"]
+tile_size = Vector2i(130, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wop3v"]
+size = Vector2(71, 515)
+
+[node name="Level4" type="Node2D" unique_id=648780992]
+script = ExtResource("1_kbdhv")
+current_level = 4
+game_time = 210.0
+item_drop_scene = ExtResource("2_jdoyc")
+nk_bullet_scene = ExtResource("3_vkpjq")
+eosinofil_bullet_scene = ExtResource("4_elt1b")
+
+[node name="GridManager" type="Node" parent="." unique_id=881849196]
+script = SubResource("GDScript_lc31b")
+
+[node name="WaveManager" type="Node" parent="." unique_id=802980219]
+script = ExtResource("2_olq8t")
+initial_spawn_delay = 25.0
+min_spawn_time = 6.0
+normal_spawn_time = 12.0
+bakteri_scene = ExtResource("6_t2baj")
+parasite_scene = ExtResource("parasite_res")
+virus_scene = ExtResource("8_6ip7q")
+
+[node name="PlacementManager" type="Node" parent="." unique_id=1835296591]
+script = ExtResource("3_0jt3j")
+selMito = ExtResource("7_dk5x8")
+selEosinofil = ExtResource("8_q0ey0")
+selEpitel = ExtResource("9_ssbvi")
+selMast = ExtResource("10_t2baj")
+selNk = ExtResource("11_ns5s4")
+selFagosit = ExtResource("12_6ip7q")
+
+[node name="bgArena" type="TextureRect" parent="." unique_id=1983883628]
+offset_right = 1366.0
+offset_bottom = 768.0
+texture = ExtResource("4_jdoyc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ArenaTileMap" type="TileMapLayer" parent="." unique_id=774650874]
+position = Vector2(80, 200)
+tile_set = SubResource("TileSet_ekgsa")
+
+[node name="EntitiesLayer" type="Node2D" parent="." unique_id=1713331179]
+
+[node name="BaseArea" type="Area2D" parent="." unique_id=1127580110]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseArea" unique_id=1118066609]
+position = Vector2(41.5, 451.5)
+shape = SubResource("RectangleShape2D_wop3v")
+
+[node name="dropTimer" type="Timer" parent="." unique_id=1065807490]
+wait_time = 8.0
+autostart = true
+
+[node name="renameTimer" type="Timer" parent="." unique_id=1253665580]
+wait_time = 12.0
+autostart = true
+
+[node name="uiLayer" type="CanvasLayer" parent="." unique_id=1187149754]
+script = ExtResource("5_vkpjq")
+pause_popup_scene = ExtResource("9_kylwg")
+win_popup_scene = ExtResource("10_tgn6p")
+lose_popup_scene = ExtResource("11_kr60w")
+
+[node name="bgEnergi" type="TextureRect" parent="uiLayer" unique_id=1268560406]
+offset_left = 246.0
+offset_top = 71.0
+offset_right = 392.0
+offset_bottom = 180.0
+texture = ExtResource("6_elt1b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="energi" type="TextureRect" parent="uiLayer/bgEnergi" unique_id=987580390]
+layout_mode = 0
+offset_left = -45.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 93.0
+texture = ExtResource("7_kylwg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LabelEnergi" type="Label" parent="uiLayer/bgEnergi" unique_id=1796130524]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 19.0
+offset_right = 141.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 50
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bgATP" type="TextureRect" parent="uiLayer" unique_id=142033553]
+offset_left = 36.0
+offset_top = 71.0
+offset_right = 182.0
+offset_bottom = 180.0
+texture = ExtResource("6_elt1b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LabelATP" type="Label" parent="uiLayer/bgATP" unique_id=2114509370]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 16.0
+offset_right = 146.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 50
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="uiLayer/bgATP" unique_id=863771969]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 9.0
+offset_right = 71.0
+offset_bottom = 97.0
+texture = ExtResource("8_tgn6p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Progress" type="HSlider" parent="uiLayer" unique_id=1717235787]
+custom_minimum_size = Vector2(20, 0)
+offset_left = 940.0
+offset_top = 87.0
+offset_right = 1321.0
+offset_bottom = 140.0
+theme_override_icons/grabber = ExtResource("9_kr60w")
+theme_override_icons/grabber_highlight = ExtResource("9_kr60w")
+
+[node name="btnSet" type="TextureButton" parent="uiLayer" unique_id=1311566009]
+offset_left = 1219.0
+offset_top = 7.0
+offset_right = 1367.0
+offset_bottom = 52.0
+texture_normal = ExtResource("10_18ar2")
+texture_pressed = ExtResource("11_a221d")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SettIcon" type="TextureRect" parent="uiLayer/btnSet" unique_id=123987456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_kckib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="bgMito" type="TextureButton" parent="uiLayer" unique_id=1336383832]
+offset_left = 453.0
+offset_top = 80.0
+offset_right = 516.0
+offset_bottom = 154.0
+texture_normal = ExtResource("6_elt1b")
+stretch_mode = 0
+
+[node name="BtnCardMito" type="TextureRect" parent="uiLayer/bgMito" unique_id=216741042]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 56.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("13_dk5x8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="uiLayer/bgMito/BtnCardMito" unique_id=204701051]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 44.0
+offset_right = 22.0
+offset_bottom = 61.0
+text = "50"
+
+[node name="TextureRect" type="TextureRect" parent="uiLayer/bgMito/BtnCardMito" unique_id=2074255268]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 44.0
+offset_right = 45.0
+offset_bottom = 60.0
+mouse_filter = 2
+texture = ExtResource("7_kylwg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cooldown" type="ColorRect" parent="uiLayer/bgMito/BtnCardMito" unique_id=1580884881]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="bgEosinofil" type="TextureButton" parent="uiLayer" unique_id=1959102453]
+offset_left = 525.0
+offset_top = 80.0
+offset_right = 585.0
+offset_bottom = 155.0
+texture_normal = ExtResource("6_elt1b")
+stretch_mode = 0
+
+[node name="BtnCardEosinofil" type="TextureRect" parent="uiLayer/bgEosinofil" unique_id=1117942924]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 53.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("14_q0ey0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="uiLayer/bgEosinofil/BtnCardEosinofil" unique_id=1495390049]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 42.0
+offset_right = 22.0
+offset_bottom = 59.0
+text = "75"
+
+[node name="TextureRect" type="TextureRect" parent="uiLayer/bgEosinofil/BtnCardEosinofil" unique_id=2111160169]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 42.0
+offset_right = 41.0
+offset_bottom = 58.0
+mouse_filter = 2
+texture = ExtResource("8_tgn6p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cooldown" type="ColorRect" parent="uiLayer/bgEosinofil/BtnCardEosinofil" unique_id=361403714]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="bgEpitel" type="TextureButton" parent="uiLayer" unique_id=955534430]
+offset_left = 594.0
+offset_top = 80.0
+offset_right = 654.0
+offset_bottom = 155.0
+texture_normal = ExtResource("6_elt1b")
+stretch_mode = 0
+
+[node name="BtnCardEpitel" type="TextureRect" parent="uiLayer/bgEpitel" unique_id=45753880]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 53.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("15_ssbvi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="uiLayer/bgEpitel/BtnCardEpitel" unique_id=411042943]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 42.0
+offset_right = 21.0
+offset_bottom = 59.0
+text = "50"
+
+[node name="TextureRect" type="TextureRect" parent="uiLayer/bgEpitel/BtnCardEpitel" unique_id=1171409478]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 42.0
+offset_right = 41.0
+offset_bottom = 58.0
+mouse_filter = 2
+texture = ExtResource("8_tgn6p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cooldown" type="ColorRect" parent="uiLayer/bgEpitel/BtnCardEpitel" unique_id=1366411339]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="bgMast" type="TextureButton" parent="uiLayer" unique_id=-2076060416]
+offset_left = 664.0
+offset_top = 80.0
+offset_right = 724.0
+offset_bottom = 155.0
+texture_normal = ExtResource("6_elt1b")
+stretch_mode = 0
+
+[node name="BtnCardMast" type="TextureRect" parent="uiLayer/bgMast" unique_id=-172924059]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("16_t2baj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="uiLayer/bgMast/BtnCardMast" unique_id=-1459195775]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 42.0
+offset_right = 29.0
+offset_bottom = 59.0
+text = "25"
+
+[node name="TextureRect" type="TextureRect" parent="uiLayer/bgMast/BtnCardMast" unique_id=-1255571543]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 42.0
+offset_right = 51.0
+offset_bottom = 58.0
+mouse_filter = 2
+texture = ExtResource("8_tgn6p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cooldown" type="ColorRect" parent="uiLayer/bgMast/BtnCardMast" unique_id=1421556393]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="bgNK" type="TextureButton" parent="uiLayer" unique_id=-1728954881]
+offset_left = 734.0
+offset_top = 80.0
+offset_right = 794.0
+offset_bottom = 155.0
+texture_normal = ExtResource("6_elt1b")
+stretch_mode = 0
+
+[node name="BtnCardNK" type="TextureRect" parent="uiLayer/bgNK" unique_id=-1701164269]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("17_ns5s4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="uiLayer/bgNK/BtnCardNK" unique_id=1079885070]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 42.0
+offset_right = 30.0
+offset_bottom = 59.0
+text = "100"
+
+[node name="TextureRect" type="TextureRect" parent="uiLayer/bgNK/BtnCardNK" unique_id=11123765]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 42.0
+offset_right = 52.0
+offset_bottom = 58.0
+mouse_filter = 2
+texture = ExtResource("8_tgn6p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cooldown" type="ColorRect" parent="uiLayer/bgNK/BtnCardNK" unique_id=647212910]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="bgFagosit" type="TextureRect" parent="uiLayer" unique_id=1436661567]
+offset_left = 805.0
+offset_top = 80.0
+offset_right = 865.0
+offset_bottom = 155.0
+texture = ExtResource("6_elt1b")

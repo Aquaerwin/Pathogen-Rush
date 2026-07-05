@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://bak1kdi2tqj"]
+
+[ext_resource type="Script" uid="uid://b6tptbvqfn12h" path="res://src/karakter/musuh/bakteri.gd" id="1_qhp8g"]
+[ext_resource type="Texture2D" uid="uid://c0q0pk4qjifdi" path="res://src/karakter/musuh/assets/bakteri/bakteriIdle (1).png" id="2_i"]
+[ext_resource type="Texture2D" uid="uid://b3gnj20m7r118" path="res://src/karakter/musuh/assets/bakteri/bakteriIdle (2).png" id="3_i"]
+[ext_resource type="Texture2D" uid="uid://lu1ewltenhax" path="res://src/karakter/musuh/assets/bakteri/bakteriIdle (3).png" id="4_i"]
+[ext_resource type="Texture2D" uid="uid://do7gam0vf5o81" path="res://src/karakter/musuh/assets/bakteri/bakteriIdle (4).png" id="5_i"]
+[ext_resource type="Texture2D" uid="uid://c1i8bxs3ynu3f" path="res://src/karakter/musuh/assets/bakteri/bakteriIdle (5).png" id="6_i"]
+[ext_resource type="Texture2D" uid="uid://5eppf086v4j3" path="res://src/karakter/musuh/assets/bakteri/bakteriAtt (1).png" id="7_a"]
+[ext_resource type="Texture2D" uid="uid://bgihpx8oqmm8s" path="res://src/karakter/musuh/assets/bakteri/bakteriAtt (2).png" id="8_a"]
+[ext_resource type="Texture2D" uid="uid://c52s3ldehyvp1" path="res://src/karakter/musuh/assets/bakteri/bakteriAtt (3).png" id="9_a"]
+[ext_resource type="Texture2D" uid="uid://bcsacy8hpthnn" path="res://src/karakter/musuh/assets/bakteri/bakteriAtt (4).png" id="10_a"]
+[ext_resource type="Texture2D" uid="uid://dx3tll6bgbmj7" path="res://src/karakter/musuh/assets/bakteri/bakteriAtt (5).png" id="11_a"]
+[ext_resource type="Texture2D" uid="uid://bwkukslmw6ukt" path="res://src/karakter/musuh/assets/bakteri/bakteriDead (1).png" id="12_d"]
+[ext_resource type="Texture2D" uid="uid://dc2odh7cwyow" path="res://src/karakter/musuh/assets/bakteri/bakteriDead (2).png" id="13_d"]
+[ext_resource type="Texture2D" uid="uid://c2ojyev0h5luy" path="res://src/karakter/musuh/assets/bakteri/bakteriDead (3).png" id="14_d"]
+[ext_resource type="Texture2D" uid="uid://br22a7sga8dnk" path="res://src/karakter/musuh/assets/bakteri/bakteriDead (4).png" id="15_d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_a")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="Bakteri" type="Area2D" unique_id=2036084175 groups=["virus"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_qhp8g")
+hp = 500
+normal_speed = 50.0
+attack_damage = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1632699432]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="shadow" type="AnimatedSprite2D" parent="." unique_id=793350398]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 25)
+rotation = 0.2617994
+scale = Vector2(0.7, 0.7)
+skew = 1.0471976
+sprite_frames = SubResource("SpriteFrames_bak")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882041169]
+sprite_frames = SubResource("SpriteFrames_bak")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1352579583]

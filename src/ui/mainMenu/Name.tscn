@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bgu1gl3ba0jy2"]
+
+[ext_resource type="Script" uid="uid://dubkm5twk3l2i" path="res://src/ui/mainMenu/Name.gd" id="1_np"]
+[ext_resource type="Texture2D" uid="uid://ccr8kpwncicgv" path="res://assets/background/backset.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://bs13tew2x621o" path="res://assets/tombol/btn.png" id="3_btn"]
+[ext_resource type="Texture2D" uid="uid://du1am0nt6r47j" path="res://assets/tombol/btnpress.png" id="4_btn_p"]
+
+[node name="Name" type="ColorRect" unique_id=9514677]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+script = ExtResource("1_np")
+
+[node name="PanelWindow" type="TextureRect" parent="." unique_id=657855565]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -284.0
+offset_right = 300.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LabelJudul" type="Label" parent="PanelWindow" unique_id=1757707002]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "GANTI NAMA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelWindow" unique_id=14736771]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="PanelWindow/VBoxContainer" unique_id=820252519]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+alignment = 1
+max_length = 12
+
+[node name="BtnOke" type="TextureButton" parent="PanelWindow/VBoxContainer" unique_id=1784099124]
+custom_minimum_size = Vector2(120, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_btn")
+texture_pressed = ExtResource("4_btn_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TxtOke" type="Label" parent="PanelWindow/VBoxContainer/BtnOke" unique_id=389066458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1

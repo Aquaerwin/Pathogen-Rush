@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://cbvtg5ws18dyj"]
+
+[ext_resource type="Script" uid="uid://bar0klee1pwen" path="res://src/karakter/musuh/Virus.gd" id="1_83bxb"]
+[ext_resource type="Texture2D" uid="uid://cptsrjifwo5iq" path="res://src/karakter/musuh/assets/virus/virusWalk (1).png" id="2_w1"]
+[ext_resource type="Texture2D" uid="uid://dinbaucvhfi5w" path="res://src/karakter/musuh/assets/virus/virusWalk (2).png" id="3_w2"]
+[ext_resource type="Texture2D" uid="uid://cpdah5x8rlvd1" path="res://src/karakter/musuh/assets/virus/virusWalk (3).png" id="4_w3"]
+[ext_resource type="Texture2D" uid="uid://co74dd7p1p1f2" path="res://src/karakter/musuh/assets/virus/virusWalk (4).png" id="5_w4"]
+[ext_resource type="Texture2D" uid="uid://dxqgh731fyasv" path="res://src/karakter/musuh/assets/virus/virusWalk (5).png" id="6_w5"]
+[ext_resource type="Texture2D" uid="uid://bfypmimldrbe" path="res://src/karakter/musuh/assets/virus/virusWalk (6).png" id="7_w6"]
+[ext_resource type="Texture2D" uid="uid://x3brye68b3oa" path="res://src/karakter/musuh/assets/virus/virusAtt (1).png" id="8_a1"]
+[ext_resource type="Texture2D" uid="uid://dhdtkt0ttcq44" path="res://src/karakter/musuh/assets/virus/virusAtt (2).png" id="9_a2"]
+[ext_resource type="Texture2D" uid="uid://dru8kugtk05wm" path="res://src/karakter/musuh/assets/virus/virusAtt (3).png" id="10_a3"]
+[ext_resource type="Texture2D" uid="uid://dkkpkg2wdejie" path="res://src/karakter/musuh/assets/virus/virusAtt (4).png" id="11_a4"]
+[ext_resource type="Texture2D" uid="uid://icmua10livpg" path="res://src/karakter/musuh/assets/virus/virusDead (1).png" id="12_d1"]
+[ext_resource type="Texture2D" uid="uid://br7aslrrac0hf" path="res://src/karakter/musuh/assets/virus/virusDead (2).png" id="13_d2"]
+[ext_resource type="Texture2D" uid="uid://uwsy2uxxskqs" path="res://src/karakter/musuh/assets/virus/virusDead (3).png" id="14_d3"]
+[ext_resource type="Texture2D" uid="uid://dhm2c1w5sidqn" path="res://src/karakter/musuh/assets/virus/virusDead (4).png" id="15_d4"]
+[ext_resource type="Texture2D" uid="uid://pl80gddyh2xj" path="res://src/karakter/musuh/assets/virus/virusDead (5).png" id="16_d5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_virus"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_a4")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d5")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[node name="Virus" type="Area2D" unique_id=1214246905 groups=["virus"]]
+script = ExtResource("1_83bxb")
+hp = 500
+normal_speed = 20.0
+attack_damage = 75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611097412]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=676937382]
+modulate = Color(0, 0, 0, 0.39215687)
+position = Vector2(-10.756917, 24.721628)
+scale = Vector2(1.2716262, 0.9499036)
+skew = 1.3962634
+sprite_frames = SubResource("SpriteFrames_virus")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.034519766
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1233414421]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_virus")
+animation = &"attack"
+autoplay = "walk"
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=146769300]

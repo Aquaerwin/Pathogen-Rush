@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://gp8buyg6l80t"]
+
+[ext_resource type="Script" uid="uid://c6eajod0xe3v6" path="res://src/ui/mainMenu/MainMenu.gd" id="1_mm"]
+[ext_resource type="Texture2D" uid="uid://c2ds6syn3mb20" path="res://assets/background/bacgroudUI.png" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://bw4tq1b0ibejc" path="res://src/ui/mainMenu/LevelSelect.tscn" id="2_pbdew"]
+[ext_resource type="PackedScene" uid="uid://bhtkata2texcd" path="res://src/ui/mainMenu/Quit.tscn" id="3_ihmud"]
+[ext_resource type="Texture2D" uid="uid://5vu5r0gykdk7" path="res://assets/logo/logoGame.png" id="3_logo"]
+[ext_resource type="PackedScene" uid="uid://buf61o61vdme1" path="res://src/ui/mainMenu/MenuSetting.tscn" id="4_fgeol"]
+[ext_resource type="Texture2D" uid="uid://ccr8kpwncicgv" path="res://assets/background/backset.png" id="4_pnl"]
+[ext_resource type="PackedScene" uid="uid://bgu1gl3ba0jy2" path="res://src/ui/mainMenu/Name.tscn" id="5_5v32o"]
+[ext_resource type="Texture2D" uid="uid://bs13tew2x621o" path="res://assets/tombol/btn.png" id="5_btn"]
+[ext_resource type="PackedScene" uid="uid://bhk8vw0vrkr4" path="res://src/ui/mainMenu/Achive.tscn" id="6_0adjk"]
+[ext_resource type="Texture2D" uid="uid://du1am0nt6r47j" path="res://assets/tombol/btnpress.png" id="6_btn_p"]
+[ext_resource type="Texture2D" uid="uid://by6mnpwuovvqy" path="res://assets/tombol/btnFocused.png" id="8_5yq15"]
+[ext_resource type="Texture2D" uid="uid://c0hkrcpgr7qf0" path="res://assets/tombol/namTag.png" id="12_namtag"]
+[ext_resource type="Texture2D" uid="uid://dij5xke2mcxs3" path="res://assets/tombol/Achive.png" id="13_achive"]
+
+[node name="MainMenu" type="Control" unique_id=333541702]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mm")
+level_select_scene = ExtResource("2_pbdew")
+quit_scene = ExtResource("3_ihmud")
+settings_scene = ExtResource("4_fgeol")
+name_scene = ExtResource("5_5v32o")
+achive_scene = ExtResource("6_0adjk")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1329579130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TopLeftMenu" type="Control" parent="." unique_id=28401955]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 230.0
+offset_bottom = 180.0
+
+[node name="BtnNameTag" type="TextureButton" parent="TopLeftMenu" unique_id=2070995189]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 0
+offset_left = -29.0
+offset_top = -27.0
+offset_right = 179.0
+offset_bottom = 68.0
+texture_normal = ExtResource("12_namtag")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TxtName" type="Label" parent="TopLeftMenu/BtnNameTag" unique_id=1772031479]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 25.0
+offset_right = -1.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+theme_override_font_sizes/font_size = 24
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnAchive" type="TextureButton" parent="TopLeftMenu" unique_id=1651310942]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 85.0
+offset_right = 70.0
+offset_bottom = 145.0
+texture_normal = ExtResource("13_achive")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PanelOption" type="TextureRect" parent="." unique_id=2020800521]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -159.0
+offset_right = 279.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 150)
+texture = ExtResource("4_pnl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelOption" unique_id=298383827]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -154.0
+offset_right = 127.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+
+[node name="BtnMulai" type="TextureButton" parent="PanelOption/VBoxContainer" unique_id=1131699567]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+focus_neighbor_top = NodePath("../BtnKeluar")
+focus_neighbor_bottom = NodePath("../BtnPengaturan")
+texture_normal = ExtResource("5_btn")
+texture_pressed = ExtResource("6_btn_p")
+texture_hover = ExtResource("8_5yq15")
+texture_focused = ExtResource("8_5yq15")
+stretch_mode = 5
+
+[node name="Txt" type="Label" parent="PanelOption/VBoxContainer/BtnMulai" unique_id=1732707053]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14400001
+anchor_right = 0.85600007
+anchor_bottom = 1.0
+offset_right = -1.5258789e-05
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Mulai"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnPengaturan" type="TextureButton" parent="PanelOption/VBoxContainer" unique_id=1036343227]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+focus_neighbor_top = NodePath("../BtnMulai")
+focus_neighbor_bottom = NodePath("../BtnKeluar")
+texture_normal = ExtResource("5_btn")
+texture_pressed = ExtResource("6_btn_p")
+texture_hover = ExtResource("8_5yq15")
+texture_focused = ExtResource("8_5yq15")
+stretch_mode = 5
+
+[node name="Txt" type="Label" parent="PanelOption/VBoxContainer/BtnPengaturan" unique_id=1266060180]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148
+anchor_right = 0.85200006
+anchor_bottom = 1.029
+offset_right = -1.5258789e-05
+offset_bottom = -0.030006409
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Pengaturan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnKeluar" type="TextureButton" parent="PanelOption/VBoxContainer" unique_id=372448329]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+focus_neighbor_top = NodePath("../BtnPengaturan")
+focus_next = NodePath("../BtnMulai")
+texture_normal = ExtResource("5_btn")
+texture_pressed = ExtResource("6_btn_p")
+texture_hover = ExtResource("8_5yq15")
+texture_focused = ExtResource("8_5yq15")
+stretch_mode = 5
+
+[node name="Txt" type="Label" parent="PanelOption/VBoxContainer/BtnKeluar" unique_id=789301932]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15200001
+anchor_right = 0.84800005
+anchor_bottom = 1.0430001
+offset_right = -1.5258789e-05
+offset_bottom = -0.010009766
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Keluar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LogoGame" type="TextureRect" parent="." unique_id=1368699858]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -276.0
+offset_top = 2.0
+offset_right = 294.0
+offset_bottom = 239.5
+grow_horizontal = 2
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://ddyyl2e0d3i1k"]
+
+[ext_resource type="Script" uid="uid://0ng38eyyipvv" path="res://src/ui/popup/LosePopup.gd" id="1_lps"]
+[ext_resource type="Texture2D" uid="uid://ccr8kpwncicgv" path="res://assets/background/backset.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://bs13tew2x621o" path="res://assets/tombol/btn.png" id="3_btn"]
+[ext_resource type="Texture2D" uid="uid://du1am0nt6r47j" path="res://assets/tombol/btnpress.png" id="4_btn_p"]
+[ext_resource type="FontFile" uid="uid://cyib4t7xf80n1" path="res://assets/lainnya/PixelGame.otf" id="5_font"]
+
+[node name="LosePopup" type="ColorRect" unique_id=1368136095]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+script = ExtResource("1_lps")
+
+[node name="Panel" type="TextureRect" parent="." unique_id=1650214124]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.514
+anchor_top = 0.72300005
+anchor_right = 0.514
+anchor_bottom = 0.72300005
+offset_left = -319.12402
+offset_top = -455.26404
+offset_right = 280.87598
+offset_bottom = 144.73596
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(300, 150)
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Panel" unique_id=1563584914]
+layout_mode = 0
+offset_top = 153.0
+offset_right = 600.0
+offset_bottom = 213.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 48
+text = "KAMU KALAH"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="Panel" unique_id=427617628]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 399.0
+offset_right = 549.0
+offset_bottom = 477.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="BtnMenu" type="TextureButton" parent="Panel/HBox" unique_id=1160809826]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+texture_normal = ExtResource("3_btn")
+texture_pressed = ExtResource("4_btn_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/HBox/BtnMenu" unique_id=917847946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 25
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnRetry" type="TextureButton" parent="Panel/HBox" unique_id=1614982555]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_btn")
+texture_pressed = ExtResource("4_btn_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/HBox/BtnRetry" unique_id=1685513856]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 25
+text = "Ulang Level"
+horizontal_alignment = 1
+vertical_alignment = 1

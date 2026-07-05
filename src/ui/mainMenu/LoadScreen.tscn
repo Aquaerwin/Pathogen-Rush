@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ddma5cgwrjenv"]
+
+[ext_resource type="Script" uid="uid://cyoerus4gfbdu" path="res://src/ui/mainMenu/LoadScreen.gd" id="1_a7tq3"]
+[ext_resource type="Texture2D" uid="uid://7yweqmhf35c6" path="res://assets/logo/logoKampus.png" id="2_kmps"]
+[ext_resource type="Texture2D" uid="uid://hwgd1utf24er" path="res://assets/logo/logoGodot.png" id="3_gdt"]
+
+[node name="LoadScreen" type="Control" unique_id=208394464]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a7tq3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1235583297]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LogoKampus" type="TextureRect" parent="." unique_id=93637882]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -99.0
+offset_right = 100.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kmps")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LogoGodot" type="TextureRect" parent="." unique_id=145308949]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -99.0
+offset_right = 100.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gdt")
+expand_mode = 1
+stretch_mode = 5

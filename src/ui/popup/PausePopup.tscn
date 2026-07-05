@@ -1,0 +1,288 @@
+[gd_scene format=3 uid="uid://conp80s75bfj7"]
+
+[ext_resource type="Script" uid="uid://bfqoxrpsiciud" path="res://src/ui/popup/PausePopup.gd" id="1_set"]
+[ext_resource type="Texture2D" uid="uid://ccr8kpwncicgv" path="res://assets/background/backset.png" id="2_bg_id"]
+[ext_resource type="Texture2D" uid="uid://ol5q0c6dackd" path="res://assets/tombol/btnVol.png" id="4_btn_v"]
+[ext_resource type="Texture2D" uid="uid://7qvn0by0ihml" path="res://assets/tombol/Cek.png" id="6_cek"]
+[ext_resource type="Texture2D" uid="uid://bs13tew2x621o" path="res://assets/tombol/btn.png" id="9_oke"]
+[ext_resource type="Texture2D" uid="uid://du1am0nt6r47j" path="res://assets/tombol/btnpress.png" id="10_oke_p"]
+
+[node name="MenuSetting" type="ColorRect" unique_id=2104507908]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+script = ExtResource("1_set")
+
+[node name="PanelWindow" type="TextureRect" parent="." unique_id=1705739412]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -284.0
+offset_right = 299.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 250)
+texture = ExtResource("2_bg_id")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SliderMusic" type="HSlider" parent="PanelWindow" unique_id=1035825328]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("4_btn_v")
+theme_override_icons/grabber_highlight = ExtResource("4_btn_v")
+value = 50.0
+
+[node name="SliderSfx" type="HSlider" parent="PanelWindow" unique_id=209566833]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("4_btn_v")
+theme_override_icons/grabber_highlight = ExtResource("4_btn_v")
+value = 50.0
+
+[node name="BtnID" type="TextureButton" parent="PanelWindow" unique_id=514707122]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 30.0
+offset_right = -130.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BoxBg" type="ColorRect" parent="PanelWindow/BtnID" unique_id=650947171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.25, 0.25, 0.25, 1)
+
+[node name="Mark" type="TextureRect" parent="PanelWindow/BtnID" unique_id=600026081]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_cek")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnENG" type="TextureButton" parent="PanelWindow" unique_id=1865047877]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BoxBg" type="ColorRect" parent="PanelWindow/BtnENG" unique_id=1757996599]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.25, 0.25, 0.25, 1)
+
+[node name="Mark" type="TextureRect" parent="PanelWindow/BtnENG" unique_id=56097899]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_cek")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnOke" type="TextureButton" parent="PanelWindow" unique_id=283815471]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_top = 380.0
+offset_right = 600.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("9_oke")
+texture_pressed = ExtResource("10_oke_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TxtOke" type="Label" parent="PanelWindow/BtnOke" unique_id=501985148]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelJudul" type="Label" parent="PanelWindow" unique_id=1041788471]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "Pengaturan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelMusik" type="Label" parent="PanelWindow" unique_id=942297300]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 175.0
+offset_right = 240.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Musik"
+vertical_alignment = 1
+
+[node name="LabelSfx" type="Label" parent="PanelWindow" unique_id=401597723]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 215.0
+offset_right = 240.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Efek Suara"
+vertical_alignment = 1
+
+[node name="LabelID" type="Label" parent="PanelWindow" unique_id=130049389]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 300.0
+offset_right = 280.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Indonesia"
+vertical_alignment = 1
+
+[node name="LabelENG" type="Label" parent="PanelWindow" unique_id=1701929749]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 300.0
+offset_right = 490.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "English"
+vertical_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="PanelWindow" unique_id=265533054]
+layout_mode = 0
+offset_top = 440.0
+offset_right = 600.0
+offset_bottom = 500.0
+mouse_filter = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="BtnMenu" type="TextureButton" parent="PanelWindow/HBox" unique_id=1625421675]
+clip_contents = true
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+texture_normal = ExtResource("9_oke")
+texture_pressed = ExtResource("10_oke_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelWindow/HBox/BtnMenu" unique_id=1295441234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnRetry" type="TextureButton" parent="PanelWindow/HBox" unique_id=726070722]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+texture_normal = ExtResource("9_oke")
+texture_pressed = ExtResource("10_oke_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelWindow/HBox/BtnRetry" unique_id=702455748]
+custom_minimum_size = Vector2(120, 45)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Ulang Level"
+horizontal_alignment = 1
+vertical_alignment = 1

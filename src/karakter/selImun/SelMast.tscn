@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cwr6kt0it2oul"]
+
+[ext_resource type="Script" uid="uid://cm8cfxgrm81hu" path="res://src/karakter/selImun/SelMast.gd" id="1_scr"]
+[ext_resource type="Texture2D" uid="uid://bbc2uoo7n2how" path="res://src/karakter/selImun/assets/selMast/mastIdle (1).png" id="2_i1"]
+[ext_resource type="Texture2D" uid="uid://bd8wmwwoycwv8" path="res://src/karakter/selImun/assets/selMast/mastIdle (2).png" id="3_i2"]
+[ext_resource type="Texture2D" uid="uid://d4hb8ga5arepa" path="res://src/karakter/selImun/assets/selMast/mastIdle (3).png" id="4_i3"]
+[ext_resource type="Texture2D" uid="uid://byky3n55qfy3m" path="res://src/karakter/selImun/assets/selMast/mastIdle (4).png" id="5_i4"]
+[ext_resource type="Texture2D" uid="uid://bsg8vvsrp4jou" path="res://src/karakter/selImun/assets/selMast/mastIdle (5).png" id="6_i5"]
+[ext_resource type="Texture2D" uid="uid://bp4g7h3vukj3h" path="res://src/karakter/selImun/assets/selMast/mastDead (1).png" id="14_d1"]
+[ext_resource type="Texture2D" uid="uid://i183yk8prcc1" path="res://src/karakter/selImun/assets/selMast/mastDead (2).png" id="15_d2"]
+[ext_resource type="Texture2D" uid="uid://ckgk0tnwds58j" path="res://src/karakter/selImun/assets/selMast/mastDead (3).png" id="16_d3"]
+[ext_resource type="Texture2D" uid="uid://cmdijewmfayaj" path="res://src/karakter/selImun/assets/selMast/mastDead (4).png" id="17_d4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d4")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="SelMast" type="Area2D" unique_id=1554834813 groups=["sel_imun"]]
+script = ExtResource("1_scr")
+damage = 1200
+explode_radius = 80.0
+hp = 300
+max_hp = 300
+cost = 25
+cooldown_tanam = 12.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347544507]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="shadow" type="AnimatedSprite2D" parent="." unique_id=428729058]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 25)
+rotation = 0.2617994
+scale = Vector2(0.7, 0.7)
+skew = 1.0471976
+sprite_frames = SubResource("SpriteFrames_anim")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.28827354
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1947290999]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_anim")
+animation = &"dead"
+autoplay = "idle"

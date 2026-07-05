@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dfi8xteak1hh1"]
+
+[ext_resource type="Script" uid="uid://do4xy44l4s4b2" path="res://src/karakter/selImun/Eosinofil.gd" id="1_scr"]
+[ext_resource type="Texture2D" uid="uid://cj47hoewglppq" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilIdle (1).png" id="2_i1"]
+[ext_resource type="Texture2D" uid="uid://b3aqti1vxxdou" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilIdle (2).png" id="3_i2"]
+[ext_resource type="Texture2D" uid="uid://526qbqfx7hao" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilIdle (3).png" id="4_i3"]
+[ext_resource type="Texture2D" uid="uid://cg11pi1vvl8lo" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilIdle (4).png" id="5_i4"]
+[ext_resource type="Texture2D" uid="uid://b0bnpq0n3ouks" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilIdle (5).png" id="6_i5"]
+[ext_resource type="Texture2D" uid="uid://cfnaeke56cs88" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilAtt (1).png" id="8_a1"]
+[ext_resource type="Texture2D" uid="uid://csimuc7mumikd" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilAtt (2).png" id="9_a2"]
+[ext_resource type="Texture2D" uid="uid://bj44sefuvsgp7" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilAtt (3).png" id="10_a3"]
+[ext_resource type="Texture2D" uid="uid://ot8b08rvlug2" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilAtt (4).png" id="11_a4"]
+[ext_resource type="Texture2D" uid="uid://bgkkylyi5ijpm" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilAtt (5).png" id="12_a5"]
+[ext_resource type="Texture2D" uid="uid://dmqeq57fqck6m" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilDead (1).png" id="14_d1"]
+[ext_resource type="Texture2D" uid="uid://bgh2apned0pip" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilDead (2).png" id="15_d2"]
+[ext_resource type="Texture2D" uid="uid://valj3k5t4foa" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilDead (3).png" id="16_d3"]
+[ext_resource type="Texture2D" uid="uid://pc1umyd54gt" path="res://src/karakter/selImun/assets/selEosinofil/eosinofilDead (4).png" id="17_d4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_a5")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d4")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_range"]
+size = Vector2(948, 40)
+
+[node name="Eosinofil" type="Area2D" unique_id=1492951231 groups=["sel_imun"]]
+script = ExtResource("1_scr")
+damage = 50
+hp = 300
+max_hp = 300
+cost = 75
+cooldown_tanam = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=700480565]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="shadow" type="AnimatedSprite2D" parent="." unique_id=1993280298]
+modulate = Color(0.14646932, 0.14646932, 0.14646932, 1)
+position = Vector2(0, 20)
+rotation = -0.40840703
+scale = Vector2(0.7, 0.7)
+skew = -0.71383965
+sprite_frames = SubResource("SpriteFrames_anim")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1616350621]
+sprite_frames = SubResource("SpriteFrames_anim")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=1899285608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=1769096262]
+position = Vector2(474, 0)
+shape = SubResource("RectangleShape2D_range")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=535711419]
+wait_time = 3.0
+one_shot = true

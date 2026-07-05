@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bqughsekjm68j"]
+
+[ext_resource type="Script" uid="uid://bjydsys1a5by0" path="res://src/ui/mainMenu/Info.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b8q8mcvdw5t8o" path="res://assets/background/bgQuit.png" id="2_bg"]
+
+[node name="Info" type="ColorRect" unique_id=505714271]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+script = ExtResource("1_script")
+
+[node name="PanelWindow" type="TextureRect" parent="." unique_id=1974465824]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -683.0
+offset_top = -200.0
+offset_right = 683.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(683, 250)
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="ImgKarakter" type="TextureRect" parent="PanelWindow" unique_id=1829030499]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 400.0
+offset_bottom = 300.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LblJudul" type="Label" parent="PanelWindow" unique_id=1748672140]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 100.0
+offset_right = 1227.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "JUDUL"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TxtDeskripsi" type="Label" parent="PanelWindow" unique_id=2957580]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 150.0
+offset_right = 1320.0
+offset_bottom = 307.0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 30
+text = "Deskripsi"
+autowrap_mode = 3

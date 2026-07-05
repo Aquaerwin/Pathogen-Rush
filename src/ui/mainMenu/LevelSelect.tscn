@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://bw4tq1b0ibejc"]
+
+[ext_resource type="Script" uid="uid://clic1rvwvj0em" path="res://src/ui/mainMenu/LevelSelect.gd" id="1_ls"]
+[ext_resource type="Shader" uid="uid://beeuleiq03o10" path="res://assets/lainnya/blur.gdshader" id="2_blur"]
+[ext_resource type="Texture2D" uid="uid://dam0awx0x3i32" path="res://assets/background/cardLevel.png" id="3_card"]
+[ext_resource type="Texture2D" uid="uid://r2l6skwuy1xb" path="res://assets/background/cardLevel1.png" id="4_a7t6a"]
+[ext_resource type="Texture2D" uid="uid://bs13tew2x621o" path="res://assets/tombol/btn.png" id="5_btn"]
+[ext_resource type="Texture2D" uid="uid://dgumuwoccq3wf" path="res://assets/background/cardLevel2.png" id="5_ndvka"]
+[ext_resource type="Texture2D" uid="uid://btm7gu8tlpurd" path="res://assets/background/cardLevel3.png" id="6_sgdc2"]
+[ext_resource type="Texture2D" uid="uid://df3p8yoq5alhh" path="res://assets/background/cardLevel4.png" id="7_pp8ki"]
+[ext_resource type="Texture2D" uid="uid://yekfkm2y6ni8" path="res://assets/background/cardLevel5.png" id="8_jldku"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blur"]
+shader = ExtResource("2_blur")
+shader_parameter/blur_amount = 2.5
+
+[node name="LevelSelect" type="ColorRect" unique_id=1770652638]
+material = SubResource("ShaderMaterial_blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+script = ExtResource("1_ls")
+gambarLevelKunci = ExtResource("3_card")
+gambarLevel1 = ExtResource("4_a7t6a")
+gambarLevel2 = ExtResource("5_ndvka")
+gambarLevel3 = ExtResource("6_sgdc2")
+gambarLevel4 = ExtResource("7_pp8ki")
+gambarLevel5 = ExtResource("8_jldku")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1287456713]
+layout_mode = 0
+offset_right = 1366.0
+offset_bottom = 768.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=317944632]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 141
+
+[node name="level1" type="TextureButton" parent="ScrollContainer/HBoxContainer" unique_id=1289815712]
+custom_minimum_size = Vector2(360, 540)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/level1" unique_id=1289937179]
+layout_mode = 0
+offset_top = 330.0
+offset_right = 360.0
+offset_bottom = 361.0
+theme_override_font_sizes/font_size = 30
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="level2" type="TextureButton" parent="ScrollContainer/HBoxContainer" unique_id=278668497]
+custom_minimum_size = Vector2(360, 540)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/HBoxContainer/level2" unique_id=2128035819]
+layout_mode = 0
+offset_top = 330.0
+offset_right = 360.0
+offset_bottom = 361.0
+theme_override_font_sizes/font_size = 30
+text = "Level 2"
+horizontal_alignment = 1
+
+[node name="level3" type="TextureButton" parent="ScrollContainer/HBoxContainer" unique_id=6661555]
+custom_minimum_size = Vector2(360, 540)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="Label3" type="Label" parent="ScrollContainer/HBoxContainer/level3" unique_id=1100950034]
+layout_mode = 0
+offset_top = 330.0
+offset_right = 360.0
+offset_bottom = 361.0
+theme_override_font_sizes/font_size = 30
+text = "Level 3"
+horizontal_alignment = 1
+
+[node name="level4" type="TextureButton" parent="ScrollContainer/HBoxContainer" unique_id=358937544]
+custom_minimum_size = Vector2(360, 540)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="Label4" type="Label" parent="ScrollContainer/HBoxContainer/level4" unique_id=1741755447]
+layout_mode = 0
+offset_top = 330.0
+offset_right = 360.0
+offset_bottom = 361.0
+theme_override_font_sizes/font_size = 30
+text = "Level 4"
+horizontal_alignment = 1
+
+[node name="level5" type="TextureButton" parent="ScrollContainer/HBoxContainer" unique_id=1561968132]
+custom_minimum_size = Vector2(360, 540)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="Label5" type="Label" parent="ScrollContainer/HBoxContainer/level5" unique_id=1987263722]
+layout_mode = 0
+offset_top = 330.0
+offset_right = 360.0
+offset_bottom = 361.0
+theme_override_font_sizes/font_size = 30
+text = "Level 5"
+horizontal_alignment = 1
+
+[node name="BtnTutup" type="TextureButton" parent="." unique_id=1450141552]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -118.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = 61.0
+grow_horizontal = 0
+texture_normal = ExtResource("5_btn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BtnTutup" unique_id=939591665]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 19.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.11372549, 0.11372549, 1)
+theme_override_font_sizes/font_size = 30
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://bhtkata2texcd"]
+
+[ext_resource type="Script" uid="uid://d1ecexsmq5510" path="res://src/ui/mainMenu/Quit.gd" id="1_qp"]
+[ext_resource type="Texture2D" uid="uid://b8q8mcvdw5t8o" path="res://assets/background/bgQuit.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://bs13tew2x621o" path="res://assets/tombol/btn.png" id="3_btn"]
+[ext_resource type="Texture2D" uid="uid://du1am0nt6r47j" path="res://assets/tombol/btnpress.png" id="4_btn_p"]
+
+[node name="Quit" type="ColorRect" unique_id=1537299120]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+script = ExtResource("1_qp")
+
+[node name="PanelWindow" type="TextureRect" parent="." unique_id=814537478]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -683.0
+offset_top = -174.0
+offset_right = 683.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 250)
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="LabelJudul" type="Label" parent="PanelWindow" unique_id=607040988]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 70.0
+offset_right = 98.0
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "KELUAR ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelWindow" unique_id=1522857599]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 60.0
+offset_right = 160.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="BtnYa" type="TextureButton" parent="PanelWindow/HBoxContainer" unique_id=1402081007]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+texture_normal = ExtResource("3_btn")
+texture_pressed = ExtResource("4_btn_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TxtYa" type="Label" parent="PanelWindow/HBoxContainer/BtnYa" unique_id=2104273114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "YA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnTidak" type="TextureButton" parent="PanelWindow/HBoxContainer" unique_id=1857542956]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+texture_normal = ExtResource("3_btn")
+texture_pressed = ExtResource("4_btn_p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TxtTidak" type="Label" parent="PanelWindow/HBoxContainer/BtnTidak" unique_id=1452197885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "TIDAK"
+horizontal_alignment = 1
+vertical_alignment = 1

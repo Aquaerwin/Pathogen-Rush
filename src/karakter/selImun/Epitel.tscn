@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bnqqa8xrf6ec2"]
+
+[ext_resource type="Script" uid="uid://ddkk4bgwuaw4g" path="res://src/karakter/selImun/Epitel.gd" id="1_epi"]
+[ext_resource type="Texture2D" uid="uid://iolef3qgum77" path="res://src/karakter/selImun/assets/selEpitel/epitelIdle (1).png" id="2_i1"]
+[ext_resource type="Texture2D" uid="uid://bv4fby6phgc5x" path="res://src/karakter/selImun/assets/selEpitel/epitelIdle (2).png" id="3_i2"]
+[ext_resource type="Texture2D" uid="uid://b4wunma35jkse" path="res://src/karakter/selImun/assets/selEpitel/epitelIdle (3).png" id="4_i3"]
+[ext_resource type="Texture2D" uid="uid://dgfppxwiogff3" path="res://src/karakter/selImun/assets/selEpitel/epitelIdle (4).png" id="5_i4"]
+[ext_resource type="Texture2D" uid="uid://bqlqg3ll3w4xe" path="res://src/karakter/selImun/assets/selEpitel/epitelIdle (5).png" id="6_i5"]
+[ext_resource type="Texture2D" uid="uid://dihfc58rxn2ot" path="res://src/karakter/selImun/assets/selEpitel/epitelIdle (6).png" id="7_i6"]
+[ext_resource type="Texture2D" uid="uid://c1bivwoay0oo7" path="res://src/karakter/selImun/assets/selEpitel/epitelDead (1).png" id="8_d1"]
+[ext_resource type="Texture2D" uid="uid://byu2see318xrv" path="res://src/karakter/selImun/assets/selEpitel/epitelDead (2).png" id="9_d2"]
+[ext_resource type="Texture2D" uid="uid://di5bvkobghcp4" path="res://src/karakter/selImun/assets/selEpitel/epitelDead (3).png" id="10_d3"]
+[ext_resource type="Texture2D" uid="uid://c65atayh407tw" path="res://src/karakter/selImun/assets/selEpitel/epitelDead (4).png" id="11_d4"]
+[ext_resource type="Texture2D" uid="uid://b02kx5se1qicp" path="res://src/karakter/selImun/assets/selEpitel/epitelDead (5).png" id="12_d5"]
+[ext_resource type="Texture2D" uid="uid://co1vgcpsmvy54" path="res://src/karakter/selImun/assets/selEpitel/epitelDead (6).png" id="13_d6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epi"]
+size = Vector2(40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d6")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="Epitel" type="Area2D" unique_id=1773316643]
+script = ExtResource("1_epi")
+hp = 2000
+max_hp = 2000
+cost = 50
+cooldown_tanam = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1957968295]
+shape = SubResource("RectangleShape2D_epi")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=1905083951]
+modulate = Color(0, 0, 0, 0.39215687)
+position = Vector2(-2.4534671, 24.649506)
+rotation = 0.20943952
+scale = Vector2(0.7062091, 0.6966033)
+skew = 1.2217305
+sprite_frames = SubResource("SpriteFrames_epi")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=142240913]
+sprite_frames = SubResource("SpriteFrames_epi")
+animation = &"dead"
+autoplay = "idle"
+frame = 5
+frame_progress = 1.0

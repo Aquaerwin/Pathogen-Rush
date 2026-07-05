@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://dc0boeh36aocp"]
+
+[ext_resource type="Script" uid="uid://jlpq40a7tvra" path="res://src/karakter/selImun/Mitokondria.gd" id="1_mito"]
+[ext_resource type="Texture2D" uid="uid://b1lkbgut11n3i" path="res://src/karakter/selImun/assets/mitokondria/mitoIdle1.png" id="2_idle1"]
+[ext_resource type="Texture2D" uid="uid://hfusg8q06nqe" path="res://src/karakter/selImun/assets/mitokondria/mitoIdle2.png" id="3_idle2"]
+[ext_resource type="Texture2D" uid="uid://cx7qm4s42p1y" path="res://src/karakter/selImun/assets/mitokondria/mitoIdle3.png" id="4_idle3"]
+[ext_resource type="Texture2D" uid="uid://da7x5xttlrwco" path="res://src/karakter/selImun/assets/mitokondria/mitoIdle4.png" id="5_idle4"]
+[ext_resource type="Texture2D" uid="uid://rhjkcxfdx8g7" path="res://src/karakter/selImun/assets/mitokondria/mitoIdle5.png" id="6_idle5"]
+[ext_resource type="Texture2D" uid="uid://cuma8wsqu8hoi" path="res://src/karakter/selImun/assets/mitokondria/mitoIdle6.png" id="7_idle6"]
+[ext_resource type="Texture2D" uid="uid://c5fhc2700mn31" path="res://src/karakter/selImun/assets/mitokondria/mitoDead (1).png" id="8_dead1"]
+[ext_resource type="Texture2D" uid="uid://c1rl26prn6pu3" path="res://src/karakter/selImun/assets/mitokondria/mitoDead (2).png" id="9_dead2"]
+[ext_resource type="Texture2D" uid="uid://bb1cuv0gs7u14" path="res://src/karakter/selImun/assets/mitokondria/mitoDead (3).png" id="10_dead3"]
+[ext_resource type="Texture2D" uid="uid://cfut7s2un8jhs" path="res://src/karakter/selImun/assets/mitokondria/mitoDead (4).png" id="11_dead4"]
+[ext_resource type="Texture2D" uid="uid://ccvrq6tn2omyi" path="res://src/karakter/selImun/assets/mitokondria/mitoDead (5).png" id="12_dead5"]
+[ext_resource type="Texture2D" uid="uid://t4el10at24py" path="res://src/karakter/selImun/assets/mitokondria/mitoDead (6).png" id="13_dead6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mito"]
+size = Vector2(40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mito"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_dead1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dead2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dead3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dead4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dead5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dead6")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_idle1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_idle2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_idle3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_idle4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_idle5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_idle6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="Mitokondria" type="Area2D" unique_id=792857330]
+script = ExtResource("1_mito")
+hp = 300
+max_hp = 300
+cost = 50
+cooldown_tanam = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1150791895]
+shape = SubResource("RectangleShape2D_mito")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=1240448246]
+modulate = Color(0, 0, 0, 0.39215687)
+position = Vector2(-2.9143667, 23.72163)
+scale = Vector2(1.3711624, 0.76994246)
+skew = 1.3962635
+sprite_frames = SubResource("SpriteFrames_mito")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.79053146
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=7429675]
+sprite_frames = SubResource("SpriteFrames_mito")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9035771
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1341904546]
+wait_time = 10.0
+autostart = true
