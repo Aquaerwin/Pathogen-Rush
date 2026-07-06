@@ -3,10 +3,10 @@
 Bertahanlah dari invasi mikroskopis! **Pathogen Rush** adalah game *Tower Defense* taktis yang memadukan keseruan meracik strategi pertahanan dengan tema biologi sistem imun manusia. 
 
 ## 🎮 Fitur Utama Game:
-- 🧬 **Sistem Ekonomi Ganda:** Kumpulkan *Energi* alami yang jatuh dari langit, dan gunakan Mitokondria untuk memproduksi *ATP* demi merekrut pasukan terkuat.
-- 🛡️ **Pasukan Imun Unik:** Buka kartu sel penjaga secara bertahap di setiap level. Mulai dari Sel Epitel (Pertahanan pasif), Sel Mast (Ranjau mematikan), Sel NK (Penembak jarak jauh), hingga Fagosit Bomb (Bom pembersih instan).
-- 🌊 **Gelombang Patogen Taktis:** Hadapi berbagai kombinasi gelombang virus musuh yang semakin lama semakin brutal hingga mencapai *Final Wave*.
-- 📱💻 **Lintas Platform:** Dirancang dan dioptimalkan agar dapat dimainkan dengan lancar baik di PC (Windows) maupun di *Smartphone* (Android).
+- 🧬 **Sistem :** Kumpulkan *Energi* alami yang jatuh dari langit, dan gunakan Mitokondria untuk memproduksi *ATP* demi merekrut pasukan terkuat.
+- 🛡️ **Pasukan Imun :** Buka kartu sel penjaga secara bertahap di setiap level. Mulai dari Sel Epitel (Pertahanan pasif), Sel Mast (Ranjau mematikan), Sel NK (Penembak jarak jauh), hingga Fagosit Bomb (Bom pembersih instan).
+- 🌊 **Gelombang Patogen:** Hadapi berbagai kombinasi gelombang virus musuh yang semakin lama semakin brutal hingga mencapai *Final Wave*.
+- 📱💻 **Platform:** Dirancang dan dioptimalkan agar dapat dimainkan dengan lancar baik di PC (Windows) maupun di *Smartphone* (Android).
 
 ## 🚀 Cara Bermain (Untuk Tester):
 1. Buka tab **[Releases](https://github.com/Aquaerwin/Pathogen-Rush/releases)** di sebelah kanan halaman ini.
