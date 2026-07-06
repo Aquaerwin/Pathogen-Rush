@@ -32,19 +32,28 @@ expand_mode = 1
 
 [node name="ImgKarakter" type="TextureRect" parent="PanelWindow" unique_id=1829030499]
 layout_mode = 0
-offset_left = 200.0
+offset_left = 150.0
 offset_top = 100.0
-offset_right = 400.0
+offset_right = 350.0
 offset_bottom = 300.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ImgTambahan" type="TextureRect" parent="PanelWindow" unique_id=1504656770]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 150.0
+offset_right = 470.0
+offset_bottom = 250.0
 expand_mode = 1
 stretch_mode = 5
 
 [node name="LblJudul" type="Label" parent="PanelWindow" unique_id=1748672140]
 layout_mode = 0
-offset_left = 420.0
-offset_top = 100.0
-offset_right = 1227.0
-offset_bottom = 155.0
+offset_left = 550.0
+offset_top = 48.0
+offset_right = 1200.0
+offset_bottom = 103.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "JUDUL"
@@ -53,10 +62,10 @@ autowrap_mode = 2
 
 [node name="TxtDeskripsi" type="Label" parent="PanelWindow" unique_id=2957580]
 layout_mode = 0
-offset_left = 420.0
-offset_top = 150.0
-offset_right = 1320.0
-offset_bottom = 307.0
+offset_left = 550.0
+offset_top = 99.0
+offset_right = 1200.0
+offset_bottom = 349.0
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_font_sizes/font_size = 30
 text = "Deskripsi"

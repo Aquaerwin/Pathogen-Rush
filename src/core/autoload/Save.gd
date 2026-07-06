@@ -32,6 +32,7 @@ var infoLevel2: bool = false
 var infoLevel3: bool = false
 var infoLevel4: bool = false
 var infoLevel5: bool = false
+var info_energi: bool = false
 
 # Status Penayangan Info Patogen Baru
 var info_enemy_virus: bool = false
@@ -72,6 +73,7 @@ func save_data():
 	config.set_value("Tutorials", "infoLevel3", infoLevel3)
 	config.set_value("Tutorials", "infoLevel4", infoLevel4)
 	config.set_value("Tutorials", "infoLevel5", infoLevel5)
+	config.set_value("Tutorials", "info_energi", info_energi)
 	
 	config.set_value("Tutorials", "info_enemy_virus", info_enemy_virus)
 	config.set_value("Tutorials", "info_enemy_bakteri", info_enemy_bakteri)
@@ -107,6 +109,7 @@ func load_data():
 	infoLevel3 = config.get_value("Tutorials", "infoLevel3", false)
 	infoLevel4 = config.get_value("Tutorials", "infoLevel4", false)
 	infoLevel5 = config.get_value("Tutorials", "infoLevel5", false)
+	info_energi = config.get_value("Tutorials", "info_energi", false)
 	
 	info_enemy_virus = config.get_value("Tutorials", "info_enemy_virus", false)
 	info_enemy_bakteri = config.get_value("Tutorials", "info_enemy_bakteri", false)

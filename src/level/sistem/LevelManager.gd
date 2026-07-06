@@ -111,7 +111,7 @@ func _ready():
 		var info_scene = load("res://src/ui/mainMenu/Info.tscn")
 		if info_scene:
 			var info_instance = info_scene.instantiate()
-			info_instance.current_level = current_level
+			info_instance.tutorial_key = current_level
 			# Masukkan ke ui_layer agar berada di atas segalanya
 			ui_layer.add_child(info_instance)
 			Save.set(info_var, true)
@@ -156,6 +156,16 @@ func update_economy_ui():
 # Memunculkan item energi dari langit secara acak
 func spawn_drop_energi():
 	if is_game_over: return
+	
+	if Save.get("info_energi") == false:
+		var info_scene = load("res://src/ui/mainMenu/Info.tscn")
+		if info_scene:
+			var info_instance = info_scene.instantiate()
+			info_instance.tutorial_key = "energi"
+			ui_layer.add_child(info_instance)
+			Save.set("info_energi", true)
+			Save.save_data()
+			
 	var drop = item_drop_scene.instantiate()
 	drop.type = "energi"
 	drop.position = Vector2(randf_range(150, 1100), -50)

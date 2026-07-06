@@ -6,8 +6,9 @@ extends ColorRect
 @onready var txt_deskripsi = $PanelWindow/TxtDeskripsi
 @onready var btn_next = $PanelWindow/BtnNext if $PanelWindow.has_node("BtnNext") else null
 @onready var lbl_next = $PanelWindow/BtnNext/LblNext if btn_next and btn_next.has_node("LblNext") else null
+@onready var img_tambahan = $PanelWindow/ImgTambahan if $PanelWindow.has_node("ImgTambahan") else null
 
-var current_level: int = 1
+var tutorial_key: Variant = 1
 var page_index: int = 0
 var info_pages = []
 
@@ -30,8 +31,8 @@ func _ready():
 	show_panel()
 
 func setup_info():
-	if InfoData.level_data.has(current_level):
-		info_pages = InfoData.level_data[current_level]
+	if InfoData.tutorial_data.has(tutorial_key):
+		info_pages = InfoData.tutorial_data[tutorial_key]
 	else:
 		info_pages = []
 	
@@ -66,6 +67,14 @@ func update_ui():
 		img_karakter.texture = load(data.img)
 	else:
 		img_karakter.texture = null
+		
+	if img_tambahan:
+		if data.has("img_2") and data.img_2 != "" and ResourceLoader.exists(data.img_2):
+			img_tambahan.show()
+			img_tambahan.texture = load(data.img_2)
+		else:
+			img_tambahan.hide()
+			img_tambahan.texture = null
 		
 	if Save.current_language == "id":
 		lbl_judul.text = data.title_id

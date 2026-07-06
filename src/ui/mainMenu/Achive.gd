@@ -58,23 +58,52 @@ func populate_grid():
 	var pathogens = []
 		
 	# Kumpulkan dan pisahkan data berdasarkan jenisnya
-	for level in InfoData.level_data:
-		var unlocked = Save.get("level_" + str(level) + "_cleared")
-		# Pengecualian: Level 1 item (tutorial dll) langsung terbuka jika pemain sudah menonton infonya
-		if level == 1 and (Save.infoLevel1 or Save.level_1_cleared):
-			unlocked = true
+	for key in InfoData.tutorial_data:
+		var unlocked = false
+		if str(key) == "energi":
+			unlocked = Save.get("info_energi")
+		else:
+			unlocked = Save.get("level_" + str(key) + "_cleared")
+			# Pengecualian: Level 1 item (tutorial dll) langsung terbuka jika pemain sudah menonton infonya
+			if str(key) == "1" and (Save.get("infoLevel1") or Save.get("level_1_cleared")):
+				unlocked = true
 			
-		for data in InfoData.level_data[level]:
+		var current_item_pages = []
+		var current_img = ""
+		
+		for data in InfoData.tutorial_data[key]:
 			if data.id == "tutorial":
 				continue
 				
-			var item = {"data": data, "unlocked": unlocked}
-			
-			# Jika path gambarnya memiliki folder 'musuh', berarti itu patogen
-			if "musuh" in data.img:
+			if current_img == "" or current_img != data.img:
+				if current_item_pages.size() > 0:
+					var item = {"pages": current_item_pages, "data": current_item_pages[0], "unlocked": unlocked}
+					if "musuh" in current_item_pages[0].img:
+						pathogens.append(item)
+					else:
+						immune_cells.append(item)
+				
+				current_img = data.img
+				current_item_pages = [data]
+			else:
+				current_item_pages.append(data)
+				
+		if current_item_pages.size() > 0:
+			var item = {"pages": current_item_pages, "data": current_item_pages[0], "unlocked": unlocked}
+			if "musuh" in current_item_pages[0].img:
 				pathogens.append(item)
 			else:
 				immune_cells.append(item)
+				
+	# Memasukkan musuh dari enemy_data
+	for e_key in InfoData.enemy_data:
+		var data = InfoData.enemy_data[e_key]
+		var unlocked = Save.get("info_enemy_" + str(e_key))
+		# Konversi null jadi false untuk keamanan
+		if unlocked == null: unlocked = false
+		
+		var item = {"pages": [data], "data": data, "unlocked": unlocked}
+		pathogens.append(item)
 				
 	# Gabungkan array: Pasukan Sel Imun lebih dulu, baru daftar Musuh
 	var all_items = immune_cells + pathogens
@@ -82,6 +111,7 @@ func populate_grid():
 	# Membangun tombol ke dalam GridContainer
 	for item in all_items:
 		var data = item.data
+		var pages = item.pages
 		var unlocked = item.unlocked
 		
 		var btn = TextureButton.new()
@@ -96,16 +126,16 @@ func populate_grid():
 			btn.modulate = Color(0, 0, 0, 1) # Hitam siluet
 			btn.disabled = true
 		else:
-			btn.pressed.connect(func(): _on_character_clicked(data))
+			btn.pressed.connect(func(): _on_character_clicked(pages))
 			
 		grid_container.add_child(btn)
 
-func _on_character_clicked(data: Dictionary):
+func _on_character_clicked(pages: Array):
 	AudioManager.playSfx("click")
 	var info_scene = load("res://src/ui/mainMenu/Info.tscn")
 	if info_scene:
 		var info = info_scene.instantiate()
-		info.info_pages = [data] # Hanya tampilkan karakter ini
+		info.info_pages = pages # Tampilkan semua halaman dari karakter ini
 		add_child(info)
 
 
